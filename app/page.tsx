@@ -52,7 +52,7 @@ export default function Home() {
     }}>
 
       {/* Logo */}
-      <Image src="/kf_logo.png" alt="KICKFLP" width={280} height={100}
+      <Image src="/kf_logo.png" alt="KICKFLP" width={200} height={80}
         style={{ objectFit: 'contain', marginBottom: '32px' }} priority />
 
       {/* Phone mockup with video */}
