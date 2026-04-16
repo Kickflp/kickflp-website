@@ -103,8 +103,8 @@ export default function Home() {
         {/* Signal/Wifi/Battery — far right, vertically centered with notch */}
         <div style={{
           position: 'absolute',
-          top: '13px',                   // STATUS BAR TOP — 5px lower to align with notch center
-          right: '34px',                 // ICONS RIGHT — distance from right edge
+          top: '16px',                   // STATUS BAR TOP
+          right: '39px',                 // ICONS RIGHT — distance from right edge
           zIndex: 3, pointerEvents: 'none',
           display: 'flex', gap: '3px', alignItems: 'center',
         }}>
