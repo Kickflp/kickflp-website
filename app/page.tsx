@@ -1,8 +1,8 @@
-// KICKFLP Waitlist Page - v2
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
+import PhoneVideo from './PhoneVideo';
 
 export default function Home() {
   const [name, setName] = useState('');
@@ -10,13 +10,6 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.play().catch((e) => console.log('Autoplay blocked:', e));
-    }
-  }, []);
 
   const handleSubmit = async () => {
     if (!name.trim() || !email.trim()) {
@@ -59,162 +52,82 @@ export default function Home() {
       boxSizing: 'border-box',
     }}>
 
-      {/* Logo */}
       <Image src="/kf_logo.png" alt="KICKFLP" width={200} height={80}
         style={{ objectFit: 'contain', marginBottom: '32px' }} priority />
 
-      {/* Phone mockup */}
-      <div style={{
-        position: 'relative',
-        width: '240px',
-        height: '480px',
-        marginBottom: '32px',
-      }}>
-        {/* Phone outer shell */}
+      <div style={{ position: 'relative', width: '240px', height: '480px', marginBottom: '32px' }}>
         <div style={{
-          position: 'absolute',
-          inset: 0,
-          borderRadius: '36px',
-          border: '8px solid #222222',
-          backgroundColor: '#000000',
-          boxShadow: '0 0 0 2px #444444, 0 30px 60px rgba(168, 240, 221, 0.15), 0 0 40px rgba(168, 240, 221, 0.08)',
-          zIndex: 2,
-          pointerEvents: 'none',
+          position: 'absolute', inset: 0, borderRadius: '36px',
+          border: '8px solid #222222', backgroundColor: '#000000',
+          boxShadow: '0 0 0 2px #444444, 0 30px 60px rgba(168,240,221,0.15)',
+          zIndex: 2, pointerEvents: 'none',
         }} />
-
-        {/* Notch */}
         <div style={{
-          position: 'absolute',
-          top: '10px',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          width: '60px',
-          height: '18px',
-          backgroundColor: '#000000',
-          borderRadius: '10px',
-          zIndex: 3,
+          position: 'absolute', top: '10px', left: '50%',
+          transform: 'translateX(-50%)', width: '60px', height: '18px',
+          backgroundColor: '#000000', borderRadius: '10px', zIndex: 3,
         }} />
-
-        {/* Video screen */}
         <div style={{
-          position: 'absolute',
-          inset: '4px',
-          borderRadius: '30px',
-          overflow: 'hidden',
-          backgroundColor: '#000',
-          zIndex: 1,
+          position: 'absolute', inset: '4px', borderRadius: '30px',
+          overflow: 'hidden', backgroundColor: '#000', zIndex: 1,
         }}>
-          <video
-            ref={videoRef}
-            src="/background.mp4"
-            autoPlay
-            loop
-            muted
-            playsInline
-            controls={false}
-            preload="auto"
-            style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              display: 'block',
-            }}
-          />
+          <PhoneVideo />
         </div>
-
-        {/* Home indicator */}
         <div style={{
-          position: 'absolute',
-          bottom: '10px',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          width: '60px',
-          height: '4px',
-          backgroundColor: '#444444',
-          borderRadius: '2px',
-          zIndex: 3,
+          position: 'absolute', bottom: '10px', left: '50%',
+          transform: 'translateX(-50%)', width: '60px', height: '4px',
+          backgroundColor: '#444444', borderRadius: '2px', zIndex: 3,
         }} />
       </div>
 
-      {/* Tagline */}
-      <p style={{
-        color: '#A8F0DD',
-        fontSize: '13px',
-        fontWeight: '600',
-        letterSpacing: '2px',
-        textTransform: 'uppercase',
-        margin: '0 0 8px 0',
-        textAlign: 'center',
-      }}>
-        Showcase your talent. Get discovered. Have fun!
+      <p style={{ color: '#A8F0DD', fontSize: '13px', fontWeight: '600',
+        letterSpacing: '2px', textTransform: 'uppercase', margin: '0 0 8px 0',
+        textAlign: 'center' }}>
+        Your front row seat to the world&apos;s best action sports
       </p>
 
-      <p style={{
-        color: '#ffffff',
-        fontSize: '22px',
-        fontWeight: '700',
-        margin: '0 0 32px 0',
-        textAlign: 'center',
-      }}>
+      <p style={{ color: '#ffffff', fontSize: '22px', fontWeight: '700',
+        margin: '0 0 32px 0', textAlign: 'center' }}>
         Join the waitlist 🤙
       </p>
 
-      {/* Form */}
-      <div style={{
-        width: '100%',
-        maxWidth: '400px',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '12px',
-      }}>
+      <div style={{ width: '100%', maxWidth: '400px', display: 'flex',
+        flexDirection: 'column', gap: '12px' }}>
         <input type="text" placeholder="Your name" value={name}
           onChange={(e) => setName(e.target.value)}
-          style={{
-            backgroundColor: '#1a1a1a', border: '1px solid #333333',
+          style={{ backgroundColor: '#1a1a1a', border: '1px solid #333333',
             borderRadius: '12px', padding: '16px', color: '#ffffff',
-            fontSize: '16px', outline: 'none', width: '100%', boxSizing: 'border-box',
-          }} />
+            fontSize: '16px', outline: 'none', width: '100%', boxSizing: 'border-box' }} />
         <input type="email" placeholder="Your email" value={email}
           onChange={(e) => setEmail(e.target.value)}
-          style={{
-            backgroundColor: '#1a1a1a', border: '1px solid #333333',
+          style={{ backgroundColor: '#1a1a1a', border: '1px solid #333333',
             borderRadius: '12px', padding: '16px', color: '#ffffff',
-            fontSize: '16px', outline: 'none', width: '100%', boxSizing: 'border-box',
-          }} />
-
+            fontSize: '16px', outline: 'none', width: '100%', boxSizing: 'border-box' }} />
         {error && (
           <p style={{ color: '#ff4444', fontSize: '14px', textAlign: 'center', margin: 0 }}>
             {error}
           </p>
         )}
-
         {success && (
-          <div style={{
-            backgroundColor: '#1a1a1a', border: '1px solid #A8F0DD',
-            borderRadius: '12px', padding: '16px', textAlign: 'center',
-          }}>
+          <div style={{ backgroundColor: '#1a1a1a', border: '1px solid #A8F0DD',
+            borderRadius: '12px', padding: '16px', textAlign: 'center' }}>
             <p style={{ color: '#A8F0DD', fontSize: '16px', fontWeight: '600', margin: 0 }}>
               You&apos;re on the list! Check your email 🤙
             </p>
           </div>
         )}
-
         <button onClick={handleSubmit} disabled={isLoading}
-          style={{
-            backgroundColor: '#A8F0DD', color: '#000000', border: 'none',
+          style={{ backgroundColor: '#A8F0DD', color: '#000000', border: 'none',
             borderRadius: '12px', padding: '16px', fontSize: '18px', fontWeight: '700',
             cursor: isLoading ? 'not-allowed' : 'pointer',
-            opacity: isLoading ? 0.7 : 1, width: '100%',
-          }}>
+            opacity: isLoading ? 0.7 : 1, width: '100%' }}>
           {isLoading ? 'Sending...' : 'Send It 🤙'}
         </button>
       </div>
 
-      {/* Astro */}
       <Image src="/astro.png" alt="KICKFLP Astronaut" width={70} height={70}
         style={{ objectFit: 'contain', marginTop: '40px', marginBottom: '16px' }} />
 
-      {/* Footer */}
       <p style={{ color: '#444444', fontSize: '12px', textAlign: 'center', margin: 0 }}>
         © 2026 KICKFLP. All Rights Reserved.
       </p>
