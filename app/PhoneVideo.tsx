@@ -25,6 +25,8 @@ export default function PhoneVideo() {
         height: "100%",
         objectFit: "cover",
         display: "block",
+        WebkitTransform: "translateZ(0)",
+        transform: "translateZ(0)",
       }}
     >
       <source src="/background.mp4" type="video/mp4" />
