@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 
 export default function Home() {
@@ -9,6 +9,13 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch((e) => console.log('Autoplay blocked:', e));
+    }
+  }, []);
 
   const handleSubmit = async () => {
     if (!name.trim() || !email.trim()) {
@@ -52,10 +59,10 @@ export default function Home() {
     }}>
 
       {/* Logo */}
-      <Image src="/kf_logo.png" alt="KICKFLP" width={200} height={80}
+      <Image src="/kf_logo.png" alt="KICKFLP" width={280} height={100}
         style={{ objectFit: 'contain', marginBottom: '32px' }} priority />
 
-      {/* Phone mockup with video */}
+      {/* Phone mockup */}
       <div style={{
         position: 'relative',
         width: '240px',
@@ -69,7 +76,7 @@ export default function Home() {
           borderRadius: '36px',
           border: '8px solid #222222',
           backgroundColor: '#000000',
-          boxShadow: '0 0 0 2px #555555, 0 30px 60px rgba(168, 240, 221, 0.15), 0 0 40px rgba(168, 240, 221, 0.08)',
+          boxShadow: '0 0 0 2px #444444, 0 30px 60px rgba(168, 240, 221, 0.15), 0 0 40px rgba(168, 240, 221, 0.08)',
           zIndex: 2,
           pointerEvents: 'none',
         }} />
@@ -82,12 +89,12 @@ export default function Home() {
           transform: 'translateX(-50%)',
           width: '60px',
           height: '18px',
-          backgroundColor: '#111111',
+          backgroundColor: '#000000',
           borderRadius: '10px',
           zIndex: 3,
         }} />
 
-        {/* Video inside phone */}
+        {/* Video screen */}
         <div style={{
           position: 'absolute',
           inset: '4px',
@@ -97,6 +104,7 @@ export default function Home() {
           zIndex: 1,
         }}>
           <video
+            ref={videoRef}
             src="/background.mp4"
             autoPlay
             loop
@@ -121,7 +129,7 @@ export default function Home() {
           transform: 'translateX(-50%)',
           width: '60px',
           height: '4px',
-          backgroundColor: '#555555',
+          backgroundColor: '#444444',
           borderRadius: '2px',
           zIndex: 3,
         }} />
