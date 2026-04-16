@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react';
 
 export default function PhoneVideo() {
-  const videoRef = useRef(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const video = videoRef.current;
