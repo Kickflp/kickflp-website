@@ -67,7 +67,7 @@ export default function Home() {
         margin: '0 0 31px 0',
         textAlign: 'center',
       }}>
-        Where Athletes Get Discovered
+        Motion > Fear
       </p>
 
       {/* PHONE — width/height = phone size. marginBottom = space to Join text */}
