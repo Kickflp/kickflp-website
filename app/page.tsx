@@ -1,3 +1,4 @@
+// KICKFLP Waitlist Page - v2
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
