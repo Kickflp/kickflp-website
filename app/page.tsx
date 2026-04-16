@@ -50,8 +50,8 @@ export default function Home() {
       fontFamily: 'Arial, sans-serif',
       boxSizing: 'border-box',
     }}>
-      <Image src="/kf_logo.png" alt="KICKFLP" width={200} height={80}
-        style={{ objectFit: 'contain', marginBottom: '24px' }} priority />
+      <Image src="/kf_logo.png" alt="KICKFLP" width={420} height={160}
+        style={{ objectFit: 'contain', marginBottom: '32px', marginTop: '-80px' }} priority />
       <p style={{ color: '#A8F0DD', fontSize: '13px', fontWeight: '600',
         letterSpacing: '2px', textTransform: 'uppercase', margin: '0 0 8px 0',
         textAlign: 'center' }}>
