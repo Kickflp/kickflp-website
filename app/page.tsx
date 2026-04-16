@@ -92,7 +92,7 @@ export default function Home() {
         {/* STATUS BAR — top:8px = distance from top */}
         <div style={{
           position: 'absolute',
-          top: '18px', left: '16px', right: '16px',
+          top: '6px', left: '16px', right: '16px',
           zIndex: 3, pointerEvents: 'none',
           display: 'flex', justifyContent: 'space-between', alignItems: 'center',
         }}>
@@ -123,7 +123,7 @@ export default function Home() {
         {/* RIGHT ICONS — bottom/right = position. gap = space between icons */}
         <div style={{
           position: 'absolute',
-          bottom: '120px',               // RIGHT ICONS BOTTOM
+          bottom: '170px',               // RIGHT ICONS BOTTOM
           right: '10px',                 // RIGHT ICONS RIGHT
           zIndex: 3, pointerEvents: 'none',
           display: 'flex', flexDirection: 'column',
@@ -175,9 +175,9 @@ export default function Home() {
             <span style={{ color: '#ffffff', fontSize: '11px', fontWeight: '700',
               textShadow: '0 1px 3px rgba(0,0,0,0.9)' }}>KICKFLP</span>
           </div>
-          <span style={{ color: '#ffffff', fontSize: '9px',
+          <span style={{ color: '#ffffff', fontSize: '10px',
             textShadow: '0 1px 3px rgba(0,0,0,0.9)', lineHeight: '1.3' }}>
-            S.A.D. @s.a.d.skateallday • IG: @presscott.s
+            S.A.D. @s.a.d.skateallday - IG: @cheezeburglar
           </span>
         </div>
 
