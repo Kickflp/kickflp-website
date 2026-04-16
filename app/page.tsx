@@ -89,34 +89,42 @@ export default function Home() {
           <PhoneVideo />
         </div>
 
-        {/* STATUS BAR — top:8px = distance from top */}
+        {/* STATUS BAR — time left of notch, icons right of notch */}
+        {/* Time — far left, vertically centered with notch */}
         <div style={{
           position: 'absolute',
-          top: '6px', left: '16px', right: '16px',
+          top: '8px',                    // STATUS BAR TOP — align with notch
+          left: '14px',                  // TIME LEFT — distance from left edge
           zIndex: 3, pointerEvents: 'none',
-          display: 'flex', justifyContent: 'space-between', alignItems: 'center',
         }}>
           <span style={{ color: '#ffffff', fontSize: '10px', fontWeight: '700',
             textShadow: '0 1px 3px rgba(0,0,0,0.8)' }}>10:49</span>
-          <div style={{ display: 'flex', gap: '3px', alignItems: 'center' }}>
-            <svg width="12" height="10" viewBox="0 0 12 10" fill="white">
-              <rect x="0" y="6" width="2" height="4" rx="0.5"/>
-              <rect x="3" y="4" width="2" height="6" rx="0.5"/>
-              <rect x="6" y="2" width="2" height="8" rx="0.5"/>
-              <rect x="9" y="0" width="2" height="10" rx="0.5"/>
-            </svg>
-            <svg width="12" height="10" viewBox="0 0 12 10" fill="none">
-              <path d="M6 7.5a1 1 0 100-2 1 1 0 000 2z" fill="white"/>
-              <path d="M3.5 5.5a3.5 3.5 0 015 0" stroke="white" strokeWidth="1" fill="none"/>
-              <path d="M1 3.5a7 7 0 0110 0" stroke="white" strokeWidth="1" fill="none"/>
-            </svg>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1px' }}>
-              <div style={{ width: '18px', height: '9px', border: '1px solid white',
-                borderRadius: '2px', padding: '1px', display: 'flex', alignItems: 'center' }}>
-                <div style={{ width: '75%', height: '100%', backgroundColor: 'white', borderRadius: '1px' }}/>
-              </div>
-              <div style={{ width: '2px', height: '5px', backgroundColor: 'white', borderRadius: '1px' }}/>
+        </div>
+        {/* Signal/Wifi/Battery — far right, vertically centered with notch */}
+        <div style={{
+          position: 'absolute',
+          top: '8px',                    // STATUS BAR TOP — align with notch
+          right: '14px',                 // ICONS RIGHT — distance from right edge
+          zIndex: 3, pointerEvents: 'none',
+          display: 'flex', gap: '3px', alignItems: 'center',
+        }}>
+          <svg width="12" height="10" viewBox="0 0 12 10" fill="white">
+            <rect x="0" y="6" width="2" height="4" rx="0.5"/>
+            <rect x="3" y="4" width="2" height="6" rx="0.5"/>
+            <rect x="6" y="2" width="2" height="8" rx="0.5"/>
+            <rect x="9" y="0" width="2" height="10" rx="0.5"/>
+          </svg>
+          <svg width="12" height="10" viewBox="0 0 12 10" fill="none">
+            <path d="M6 7.5a1 1 0 100-2 1 1 0 000 2z" fill="white"/>
+            <path d="M3.5 5.5a3.5 3.5 0 015 0" stroke="white" strokeWidth="1" fill="none"/>
+            <path d="M1 3.5a7 7 0 0110 0" stroke="white" strokeWidth="1" fill="none"/>
+          </svg>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1px' }}>
+            <div style={{ width: '18px', height: '9px', border: '1px solid white',
+              borderRadius: '2px', padding: '1px', display: 'flex', alignItems: 'center' }}>
+              <div style={{ width: '75%', height: '100%', backgroundColor: 'white', borderRadius: '1px' }}/>
             </div>
+            <div style={{ width: '2px', height: '5px', backgroundColor: 'white', borderRadius: '1px' }}/>
           </div>
         </div>
 
