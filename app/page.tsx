@@ -94,7 +94,7 @@ export default function Home() {
         <div style={{
           position: 'absolute',
           top: '13px',                   // STATUS BAR TOP — 5px lower to align with notch center
-          left: '14px',                  // TIME LEFT — distance from left edge
+          left: '49px',                  // TIME LEFT — distance from left edge
           zIndex: 3, pointerEvents: 'none',
         }}>
           <span style={{ color: '#ffffff', fontSize: '10px', fontWeight: '700',
@@ -104,7 +104,7 @@ export default function Home() {
         <div style={{
           position: 'absolute',
           top: '13px',                   // STATUS BAR TOP — 5px lower to align with notch center
-          right: '14px',                 // ICONS RIGHT — distance from right edge
+          right: '34px',                 // ICONS RIGHT — distance from right edge
           zIndex: 3, pointerEvents: 'none',
           display: 'flex', gap: '3px', alignItems: 'center',
         }}>
