@@ -93,7 +93,7 @@ export default function Home() {
         {/* Time — far left, vertically centered with notch */}
         <div style={{
           position: 'absolute',
-          top: '8px',                    // STATUS BAR TOP — align with notch
+          top: '13px',                   // STATUS BAR TOP — 5px lower to align with notch center
           left: '14px',                  // TIME LEFT — distance from left edge
           zIndex: 3, pointerEvents: 'none',
         }}>
@@ -103,7 +103,7 @@ export default function Home() {
         {/* Signal/Wifi/Battery — far right, vertically centered with notch */}
         <div style={{
           position: 'absolute',
-          top: '8px',                    // STATUS BAR TOP — align with notch
+          top: '13px',                   // STATUS BAR TOP — 5px lower to align with notch center
           right: '14px',                 // ICONS RIGHT — distance from right edge
           zIndex: 3, pointerEvents: 'none',
           display: 'flex', gap: '3px', alignItems: 'center',
