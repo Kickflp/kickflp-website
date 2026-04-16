@@ -55,7 +55,7 @@ export default function Home() {
       {/* LOGO — width:200 height:80 FIXED. marginBottom = space to tagline */}
       <Image src="/kf_logo.png" alt="KICKFLP"
         width={200} height={80}
-        style={{ objectFit: 'contain', marginBottom: '12px' }} priority />
+        style={{ objectFit: 'contain', marginBottom: '0px', marginTop: '-10px' }} priority />
 
       {/* TAGLINE — fontSize, letterSpacing, margin '0 0 Xpx 0' = space to phone */}
       <p style={{
@@ -64,7 +64,7 @@ export default function Home() {
         fontWeight: '600',
         letterSpacing: '2px',
         textTransform: 'uppercase',
-        margin: '0 0 16px 0',
+        margin: '0 0 31px 0',
         textAlign: 'center',
       }}>
         Where Athletes Get Discovered
@@ -73,8 +73,8 @@ export default function Home() {
       {/* PHONE — width/height = phone size. marginBottom = space to Join text */}
       <div style={{
         position: 'relative',
-        width: '288px',                  // PHONE WIDTH
-        height: '576px',                 // PHONE HEIGHT
+        width: '317px',                  // PHONE WIDTH
+        height: '634px',                 // PHONE HEIGHT
         marginBottom: '24px',            // PHONE BOTTOM MARGIN
       }}>
 
@@ -92,7 +92,7 @@ export default function Home() {
         {/* STATUS BAR — top:8px = distance from top */}
         <div style={{
           position: 'absolute',
-          top: '8px', left: '16px', right: '16px',
+          top: '18px', left: '16px', right: '16px',
           zIndex: 3, pointerEvents: 'none',
           display: 'flex', justifyContent: 'space-between', alignItems: 'center',
         }}>
@@ -123,7 +123,7 @@ export default function Home() {
         {/* RIGHT ICONS — bottom/right = position. gap = space between icons */}
         <div style={{
           position: 'absolute',
-          bottom: '90px',                // RIGHT ICONS BOTTOM
+          bottom: '120px',               // RIGHT ICONS BOTTOM
           right: '10px',                 // RIGHT ICONS RIGHT
           zIndex: 3, pointerEvents: 'none',
           display: 'flex', flexDirection: 'column',
@@ -165,7 +165,7 @@ export default function Home() {
               width: '30px',             // AVATAR SIZE
               height: '30px',
               borderRadius: '50%',
-              border: '1.5px solid #ffffff',
+              border: 'none',
               overflow: 'hidden',
               backgroundColor: '#000',
             }}>
