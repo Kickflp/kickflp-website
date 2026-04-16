@@ -1,65 +1,104 @@
-import Image from "next/image";
+'use client';
+
+import { useState } from 'react';
+import Image from 'next/image';
 
 export default function Home() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState('');
+
+  const handleSubmit = async () => {
+    if (!name.trim() || !email.trim()) {
+      setError('Please enter your name and email.');
+      return;
+    }
+    setIsLoading(true);
+    setError('');
+    try {
+      const res = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email }),
+      });
+      if (res.ok) {
+        setSuccess(true);
+        setName('');
+        setEmail('');
+        setTimeout(() => setSuccess(false), 2500);
+      } else {
+        setError('Something went wrong. Please try again.');
+      }
+    } catch {
+      setError('Something went wrong. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <main style={{
+      backgroundColor: '#000000',
+      minHeight: '100vh',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: '24px',
+      fontFamily: 'Arial, sans-serif',
+      boxSizing: 'border-box',
+    }}>
+      <Image src="/kf_logo.png" alt="KICKFLP" width={200} height={80}
+        style={{ objectFit: 'contain', marginBottom: '24px' }} priority />
+      <p style={{ color: '#A8F0DD', fontSize: '13px', fontWeight: '600',
+        letterSpacing: '2px', textTransform: 'uppercase', margin: '0 0 8px 0',
+        textAlign: 'center' }}>
+        Your front row seat to the world&apos;s best action sports
+      </p>
+      <p style={{ color: '#ffffff', fontSize: '22px', fontWeight: '700',
+        margin: '0 0 40px 0', textAlign: 'center' }}>
+        Join the waitlist 🤙
+      </p>
+      <div style={{ width: '100%', maxWidth: '400px', display: 'flex',
+        flexDirection: 'column', gap: '12px' }}>
+        <input type="text" placeholder="Your name" value={name}
+          onChange={(e) => setName(e.target.value)}
+          style={{ backgroundColor: '#1a1a1a', border: '1px solid #333333',
+            borderRadius: '12px', padding: '16px', color: '#ffffff',
+            fontSize: '16px', outline: 'none', width: '100%', boxSizing: 'border-box' }} />
+        <input type="email" placeholder="Your email" value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          style={{ backgroundColor: '#1a1a1a', border: '1px solid #333333',
+            borderRadius: '12px', padding: '16px', color: '#ffffff',
+            fontSize: '16px', outline: 'none', width: '100%', boxSizing: 'border-box' }} />
+        {error && (
+          <p style={{ color: '#ff4444', fontSize: '14px', textAlign: 'center', margin: 0 }}>
+            {error}
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+        )}
+        {success && (
+          <div style={{ backgroundColor: '#1a1a1a', border: '1px solid #A8F0DD',
+            borderRadius: '12px', padding: '16px', textAlign: 'center' }}>
+            <p style={{ color: '#A8F0DD', fontSize: '16px', fontWeight: '600', margin: 0 }}>
+              You&apos;re on the list! Check your email 🤙
+            </p>
+          </div>
+        )}
+        <button onClick={handleSubmit} disabled={isLoading}
+          style={{ backgroundColor: '#A8F0DD', color: '#000000', border: 'none',
+            borderRadius: '12px', padding: '16px', fontSize: '18px', fontWeight: '700',
+            cursor: isLoading ? 'not-allowed' : 'pointer', opacity: isLoading ? 0.7 : 1,
+            width: '100%' }}>
+          {isLoading ? 'Sending...' : 'Send It 🤙'}
+        </button>
+      </div>
+      <Image src="/astro.png" alt="KICKFLP Astronaut" width={80} height={80}
+        style={{ objectFit: 'contain', marginTop: '48px', marginBottom: '24px' }} />
+      <p style={{ color: '#444444', fontSize: '12px', textAlign: 'center', margin: 0 }}>
+        © 2026 KICKFLP. All Rights Reserved.
+      </p>
+    </main>
   );
 }
