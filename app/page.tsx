@@ -52,32 +52,19 @@ export default function Home() {
       boxSizing: 'border-box',
     }}>
 
-      <Image src="/kf_logo.png" alt="KICKFLP" width={200} height={80}
-        style={{ objectFit: 'contain', marginBottom: '32px' }} priority />
+      <Image src="/kf_logo.png" alt="KICKFLP" width={280} height={100}
+        style={{ objectFit: 'contain', marginBottom: '24px' }} priority />
 
-      <div style={{ position: 'relative', width: '240px', height: '480px', marginBottom: '32px' }}>
-        <div style={{
-          position: 'absolute', inset: 0, borderRadius: '36px',
-          border: '8px solid #222222', backgroundColor: '#000000',
-          boxShadow: '0 0 0 2px #444444, 0 30px 60px rgba(168,240,221,0.15)',
-          zIndex: 2, pointerEvents: 'none',
-        }} />
-        <div style={{
-          position: 'absolute', top: '10px', left: '50%',
-          transform: 'translateX(-50%)', width: '60px', height: '18px',
-          backgroundColor: '#000000', borderRadius: '10px', zIndex: 3,
-        }} />
-        <div style={{
-          position: 'absolute', inset: '4px', borderRadius: '30px',
-          overflow: 'hidden', backgroundColor: '#000', zIndex: 1,
-        }}>
-          <PhoneVideo />
-        </div>
-        <div style={{
-          position: 'absolute', bottom: '10px', left: '50%',
-          transform: 'translateX(-50%)', width: '60px', height: '4px',
-          backgroundColor: '#444444', borderRadius: '2px', zIndex: 3,
-        }} />
+      {/* Video hero - no phone frame */}
+      <div style={{
+        width: '100%',
+        maxWidth: '320px',
+        height: '400px',
+        borderRadius: '16px',
+        overflow: 'hidden',
+        marginBottom: '32px',
+      }}>
+        <PhoneVideo />
       </div>
 
       <p style={{ color: '#A8F0DD', fontSize: '13px', fontWeight: '600',
