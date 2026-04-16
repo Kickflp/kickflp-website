@@ -67,8 +67,8 @@ export default function Home() {
           position: 'absolute',
           inset: 0,
           borderRadius: '36px',
-          border: '8px solid #333333',
-          backgroundColor: '#111111',
+          border: '8px solid #222222',
+          backgroundColor: '#000000',
           boxShadow: '0 0 0 2px #555555, 0 30px 60px rgba(168, 240, 221, 0.15), 0 0 40px rgba(168, 240, 221, 0.08)',
           zIndex: 2,
           pointerEvents: 'none',
@@ -102,10 +102,13 @@ export default function Home() {
             loop
             muted
             playsInline
+            controls={false}
+            preload="auto"
             style={{
               width: '100%',
               height: '100%',
               objectFit: 'cover',
+              display: 'block',
             }}
           />
         </div>
