@@ -44,7 +44,7 @@ export default function Home() {
     <>
     <BackgroundAnimation />
     <main style={{
-      backgroundColor: '#000000',
+      backgroundColor: 'transparent',
       minHeight: '100vh',
       display: 'flex',
       flexDirection: 'column',
@@ -263,7 +263,7 @@ export default function Home() {
           top: '10px', left: '50%',
           transform: 'translateX(-50%)',
           width: '72px', height: '20px',
-          backgroundColor: '#000000',
+          backgroundColor: 'transparent',
           borderRadius: '10px',
           zIndex: 5, pointerEvents: 'none',
         }} />
