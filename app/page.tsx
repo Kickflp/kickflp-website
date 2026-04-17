@@ -67,7 +67,7 @@ export default function Home() {
         margin: '0 0 31px 0',
         textAlign: 'center',
       }}>
-        Motion <span style={{fontSize: '15px', fontWeight: '800'}}>{'>'}</span> Fear
+        Motion <span style={{fontSize: '16px', fontWeight: '800'}}>{'>'}</span> Fear
       </p>
 
       {/* PHONE — width/height = phone size. marginBottom = space to Join text */}
