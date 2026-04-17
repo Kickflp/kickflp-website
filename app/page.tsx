@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import PhoneVideo from './PhoneVideo';
+import BackgroundAnimation from './BackgroundAnimation';
+import BackgroundAnimation from './BackgroundAnimation';
 
 export default function Home() {
   const [name, setName] = useState('');
@@ -40,6 +42,8 @@ export default function Home() {
   };
 
   return (
+    <>
+    <BackgroundAnimation />
     <main style={{
       backgroundColor: '#000000',
       minHeight: '100vh',
@@ -50,6 +54,8 @@ export default function Home() {
       padding: '15px 24px',             // PAGE: top/bottom padding
       fontFamily: 'Arial, sans-serif',
       boxSizing: 'border-box',
+      position: 'relative',
+      zIndex: 1,
     }}>
 
       {/* LOGO — width:200 height:80 FIXED. marginBottom = space to tagline */}
@@ -342,5 +348,9 @@ export default function Home() {
       </p>
 
     </main>
+  );
+    </>
+  );
+    </>
   );
 }
