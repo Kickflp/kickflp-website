@@ -29,7 +29,7 @@ export default function BackgroundAnimation() {
     ];
 
     // Stars
-    const stars: { x: number; y: number; size: number; opacity: number; opacityDir: number; vy: number; }[] = [];
+    const stars: { x: number; y: number; size: number; opacity: number; opacityDir: number; vx: number; vy: number; }[] = [];
     for (let i = 0; i < 80; i++) {
       stars.push({
         x: Math.random() * window.innerWidth,
@@ -37,6 +37,7 @@ export default function BackgroundAnimation() {
         size: Math.random() * 1.5 + 0.3,
         opacity: Math.random() * 0.35 + 0.05,
         opacityDir: (Math.random() > 0.5 ? 1 : -1) * 0.003,
+        vx: Math.random() * 0.2 + 0.05,
         vy: Math.random() * 0.3 + 0.1,
       });
     }
@@ -67,8 +68,10 @@ export default function BackgroundAnimation() {
       stars.forEach(s => {
         s.opacity += s.opacityDir;
         if (s.opacity > 0.40 || s.opacity < 0.02) s.opacityDir *= -1;
+        s.x += s.vx;
         s.y += s.vy;
         if (s.y > canvas.height) { s.y = 0; s.x = Math.random() * canvas.width; }
+        if (s.x > canvas.width) { s.x = 0; s.y = Math.random() * canvas.height; }
         ctx.beginPath();
         ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
         ctx.fillStyle = WHITE + ' ' + s.opacity + ')';
