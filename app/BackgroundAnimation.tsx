@@ -22,47 +22,36 @@ export default function BackgroundAnimation() {
     const WHITE = 'rgba(255, 255, 255,';
 
     const sports = [
-      'SKATEBOARDING', 'SURFING', 'BMX', 'MOTOCROSS',
-      'SNOWBOARDING', 'SKIING', 'MOUNTAIN BIKING', 'PARKOUR',
-      'CLIMBING', 'WAKEBOARDING', 'SCOOTER', 'FMX',
-      'SKIMBOARDING', 'BODYBOARD', 'MYSTERY', 'MOTION > FEAR',
+      'Skateboarding', 'Surfing', 'BMX', 'Motocross',
+      'Snowboarding', 'Skiing', 'Mountain Biking', 'Parkour',
+      'Climbing', 'Wakeboarding', 'Scooter', 'FMX',
+      'Skimboarding', 'Bodyboarding', 'Mystery', 'Motion > Fear',
     ];
 
-    // Stars — outward from center (Option C)
-    const stars: { x: number; y: number; vx: number; vy: number; size: number; opacity: number; opacityDir: number; }[] = [];
+    // Stars moving straight down at varying speeds — like falling through space
+    const stars: { x: number; y: number; vy: number; size: number; opacity: number; trail: number; }[] = [];
 
-    const spawnStar = () => {
-      const angle = Math.random() * Math.PI * 2;
-      const speed = Math.random() * 0.4 + 0.15;
-      return {
-        x: canvas.width / 2 + (Math.random() - 0.5) * 40,
-        y: canvas.height / 2 + (Math.random() - 0.5) * 40,
-        vx: Math.cos(angle) * speed,
-        vy: Math.sin(angle) * speed,
-        size: Math.random() * 1.5 + 0.3,
-        opacity: Math.random() * 0.45 + 0.05,
-        opacityDir: (Math.random() > 0.5 ? 1 : -1) * 0.003,
-      };
-    };
-
-    for (let i = 0; i < 80; i++) {
-      const s = spawnStar();
-      // Scatter initial positions so screen isnt empty at start
-      s.x = Math.random() * canvas.width;
-      s.y = Math.random() * canvas.height;
-      stars.push(s);
+    for (let i = 0; i < 120; i++) {
+      stars.push({
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        vy: Math.random() * 1.2 + 0.3,   // varying speeds = depth illusion
+        size: Math.random() * 1.8 + 0.2,
+        opacity: Math.random() * 0.45 + 0.08,
+        trail: Math.random() * 8 + 2,     // trail length for motion blur feel
+      });
     }
 
     // Sport words
     type WordState = 'fadein' | 'hold' | 'fadeout' | 'waiting';
     const words: { text: string; x: number; y: number; opacity: number; fontSize: number; color: string; state: WordState; timer: number; holdTime: number; }[] = [];
-    for (let i = 0; i < 12; i++) {
+    for (let i = 0; i < 10; i++) {
       words.push({
         text: sports[Math.floor(Math.random() * sports.length)],
         x: Math.random() * window.innerWidth,
         y: Math.random() * window.innerHeight,
         opacity: 0,
-        fontSize: Math.random() * 8 + 9,
+        fontSize: Math.random() * 7 + 9,
         color: Math.random() > 0.3 ? MINT : WHITE,
         state: 'waiting',
         timer: Math.random() * 200,
@@ -75,18 +64,28 @@ export default function BackgroundAnimation() {
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Draw stars expanding outward from center
-      stars.forEach((s, i) => {
-        s.opacity += s.opacityDir;
-        if (s.opacity > 0.50 || s.opacity < 0.02) s.opacityDir *= -1;
-        s.x += s.vx;
+      // Draw stars with motion trail
+      stars.forEach(s => {
         s.y += s.vy;
-        // When star exits screen reset to center
-        if (s.x < 0 || s.x > canvas.width || s.y < 0 || s.y > canvas.height) {
-          stars[i] = spawnStar();
+        if (s.y > canvas.height + 10) {
+          s.y = -10;
+          s.x = Math.random() * canvas.width;
         }
+
+        // Draw trail (motion blur effect)
+        const grad = ctx.createLinearGradient(s.x, s.y - s.trail, s.x, s.y);
+        grad.addColorStop(0, WHITE + ' 0)');
+        grad.addColorStop(1, WHITE + ' ' + s.opacity + ')');
         ctx.beginPath();
-        ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
+        ctx.strokeStyle = grad;
+        ctx.lineWidth = s.size;
+        ctx.moveTo(s.x, s.y - s.trail);
+        ctx.lineTo(s.x, s.y);
+        ctx.stroke();
+
+        // Draw star dot at tip
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.size * 0.8, 0, Math.PI * 2);
         ctx.fillStyle = WHITE + ' ' + s.opacity + ')';
         ctx.fill();
       });
@@ -99,7 +98,7 @@ export default function BackgroundAnimation() {
             w.text = sports[Math.floor(Math.random() * sports.length)];
             w.x = Math.random() * (canvas.width - 200) + 50;
             w.y = Math.random() * (canvas.height - 100) + 50;
-            w.fontSize = Math.random() * 8 + 9;
+            w.fontSize = Math.random() * 7 + 9;
             w.color = Math.random() > 0.3 ? MINT : WHITE;
             w.holdTime = Math.random() * 120 + 60;
             w.state = 'fadein';
