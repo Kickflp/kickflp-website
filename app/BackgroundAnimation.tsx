@@ -28,12 +28,28 @@ export default function BackgroundAnimation() {
       'SKIMBOARDING', 'BODYBOARD', 'MYSTERY', 'MOTION > FEAR',
     ];
 
-    // Create word objects
+    // ── STARS ────────────────────────────────────────────────
+    const stars: {
+      x: number; y: number;
+      size: number; opacity: number;
+      opacityDir: number;
+    }[] = [];
+
+    for (let i = 0; i < 80; i++) {
+      stars.push({
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        size: Math.random() * 1.5 + 0.3,
+        opacity: Math.random() * 0.2 + 0.05,
+        opacityDir: (Math.random() > 0.5 ? 1 : -1) * 0.003,
+      });
+    }
+
+    // ── SPORT WORDS ──────────────────────────────────────────
     const words: {
       text: string;
       x: number; y: number;
       opacity: number;
-      targetOpacity: number;
       fontSize: number;
       color: string;
       state: 'fadein' | 'hold' | 'fadeout' | 'waiting';
@@ -41,21 +57,17 @@ export default function BackgroundAnimation() {
       holdTime: number;
     }[] = [];
 
-    const randomColor = () => Math.random() > 0.3 ? MINT : WHITE;
-
-    // Initialize words spread across screen
     for (let i = 0; i < 12; i++) {
       words.push({
         text: sports[Math.floor(Math.random() * sports.length)],
         x: Math.random() * window.innerWidth,
         y: Math.random() * window.innerHeight,
         opacity: 0,
-        targetOpacity: 0,
-        fontSize: Math.random() * 8 + 9, // 9-17px
-        color: randomColor(),
+        fontSize: Math.random() * 8 + 9,
+        color: Math.random() > 0.3 ? MINT : WHITE,
         state: 'waiting',
-        timer: Math.random() * 200, // stagger starts
-        holdTime: Math.random() * 180 + 120, // how long it stays visible
+        timer: Math.random() * 200,
+        holdTime: Math.random() * 120 + 60,
       });
     }
 
@@ -64,17 +76,28 @@ export default function BackgroundAnimation() {
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+      // Draw stars
+      stars.forEach(s => {
+        s.opacity += s.opacityDir;
+        if (s.opacity > 0.25 || s.opacity < 0.02) s.opacityDir *= -1;
+
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
+        ctx.fillStyle = `${WHITE} ${s.opacity})`;
+        ctx.fill();
+      });
+
+      // Draw sport words
       words.forEach(w => {
         if (w.state === 'waiting') {
           w.timer--;
           if (w.timer <= 0) {
-            // Pick new random position and sport
             w.text = sports[Math.floor(Math.random() * sports.length)];
             w.x = Math.random() * (canvas.width - 200) + 50;
             w.y = Math.random() * (canvas.height - 100) + 50;
             w.fontSize = Math.random() * 8 + 9;
-            w.color = randomColor();
-            w.holdTime = Math.random() * 200 + 100;
+            w.color = Math.random() > 0.3 ? MINT : WHITE;
+            w.holdTime = Math.random() * 120 + 60;
             w.state = 'fadein';
           }
           return;
@@ -103,11 +126,9 @@ export default function BackgroundAnimation() {
           }
         }
 
-        // Draw word
         if (w.opacity > 0) {
-          ctx.font = `600 ${w.fontSize}px Arial`;
-          ctx.letterSpacing = '2px';
-          ctx.fillStyle = `${w.color} ${w.opacity})`;
+          ctx.font = \`600 \${w.fontSize}px Arial\`;
+          ctx.fillStyle = \`\${w.color} \${w.opacity})\`;
           ctx.fillText(w.text, w.x, w.y);
         }
       });
