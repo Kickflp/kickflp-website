@@ -28,18 +28,29 @@ export default function BackgroundAnimation() {
       'SKIMBOARDING', 'BODYBOARD', 'MYSTERY', 'MOTION > FEAR',
     ];
 
-    // Stars
-    const stars: { x: number; y: number; size: number; opacity: number; opacityDir: number; vx: number; vy: number; }[] = [];
-    for (let i = 0; i < 80; i++) {
-      stars.push({
-        x: Math.random() * window.innerWidth,
-        y: Math.random() * window.innerHeight,
+    // Stars — outward from center (Option C)
+    const stars: { x: number; y: number; vx: number; vy: number; size: number; opacity: number; opacityDir: number; }[] = [];
+
+    const spawnStar = () => {
+      const angle = Math.random() * Math.PI * 2;
+      const speed = Math.random() * 0.4 + 0.15;
+      return {
+        x: canvas.width / 2 + (Math.random() - 0.5) * 40,
+        y: canvas.height / 2 + (Math.random() - 0.5) * 40,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed,
         size: Math.random() * 1.5 + 0.3,
-        opacity: Math.random() * 0.35 + 0.05,
+        opacity: Math.random() * 0.45 + 0.05,
         opacityDir: (Math.random() > 0.5 ? 1 : -1) * 0.003,
-        vx: Math.random() * 0.2 + 0.05,
-        vy: Math.random() * 0.3 + 0.1,
-      });
+      };
+    };
+
+    for (let i = 0; i < 80; i++) {
+      const s = spawnStar();
+      // Scatter initial positions so screen isnt empty at start
+      s.x = Math.random() * canvas.width;
+      s.y = Math.random() * canvas.height;
+      stars.push(s);
     }
 
     // Sport words
@@ -64,14 +75,16 @@ export default function BackgroundAnimation() {
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Draw stars
-      stars.forEach(s => {
+      // Draw stars expanding outward from center
+      stars.forEach((s, i) => {
         s.opacity += s.opacityDir;
-        if (s.opacity > 0.40 || s.opacity < 0.02) s.opacityDir *= -1;
+        if (s.opacity > 0.50 || s.opacity < 0.02) s.opacityDir *= -1;
         s.x += s.vx;
         s.y += s.vy;
-        if (s.y > canvas.height) { s.y = 0; s.x = Math.random() * canvas.width; }
-        if (s.x > canvas.width) { s.x = 0; s.y = Math.random() * canvas.height; }
+        // When star exits screen reset to center
+        if (s.x < 0 || s.x > canvas.width || s.y < 0 || s.y > canvas.height) {
+          stars[i] = spawnStar();
+        }
         ctx.beginPath();
         ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
         ctx.fillStyle = WHITE + ' ' + s.opacity + ')';
