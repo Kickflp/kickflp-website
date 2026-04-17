@@ -60,7 +60,7 @@ export default function Home() {
       {/* TAGLINE — fontSize, letterSpacing, margin '0 0 Xpx 0' = space to phone */}
       <p style={{
         color: '#A8F0DD',
-        fontSize: '11px',
+        fontSize: '13px',
         fontWeight: '600',
         letterSpacing: '2px',
         textTransform: 'uppercase',
@@ -180,7 +180,7 @@ export default function Home() {
               <img src="/astro.png" alt="avatar"
                 style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
             </div>
-            <span style={{ color: '#ffffff', fontSize: '11px', fontWeight: '700',
+            <span style={{ color: '#ffffff', fontSize: '13px', fontWeight: '700',
               textShadow: '0 1px 3px rgba(0,0,0,0.9)' }}>KICKFLP</span>
           </div>
           <span style={{ color: '#ffffff', fontSize: '10px',
