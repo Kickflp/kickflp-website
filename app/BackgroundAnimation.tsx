@@ -3,12 +3,12 @@
 import { useEffect, useRef } from 'react';
 
 export default function BackgroundAnimation() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const canvasRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
+    const canvas = canvasRef.current as unknown as HTMLCanvasElement;
     if (!canvas) return;
-    const ctx = canvas.getContext('2d');
+    const ctx = (canvas as HTMLCanvasElement).getContext('2d');
     if (!ctx) return;
 
     const resize = () => {
@@ -28,13 +28,8 @@ export default function BackgroundAnimation() {
       'SKIMBOARDING', 'BODYBOARD', 'MYSTERY', 'MOTION > FEAR',
     ];
 
-    // ── STARS ────────────────────────────────────────────────
-    const stars: {
-      x: number; y: number;
-      size: number; opacity: number;
-      opacityDir: number;
-    }[] = [];
-
+    // Stars
+    const stars: { x: number; y: number; size: number; opacity: number; opacityDir: number; }[] = [];
     for (let i = 0; i < 80; i++) {
       stars.push({
         x: Math.random() * window.innerWidth,
@@ -45,18 +40,9 @@ export default function BackgroundAnimation() {
       });
     }
 
-    // ── SPORT WORDS ──────────────────────────────────────────
-    const words: {
-      text: string;
-      x: number; y: number;
-      opacity: number;
-      fontSize: number;
-      color: string;
-      state: 'fadein' | 'hold' | 'fadeout' | 'waiting';
-      timer: number;
-      holdTime: number;
-    }[] = [];
-
+    // Sport words
+    type WordState = 'fadein' | 'hold' | 'fadeout' | 'waiting';
+    const words: { text: string; x: number; y: number; opacity: number; fontSize: number; color: string; state: WordState; timer: number; holdTime: number; }[] = [];
     for (let i = 0; i < 12; i++) {
       words.push({
         text: sports[Math.floor(Math.random() * sports.length)],
@@ -80,10 +66,9 @@ export default function BackgroundAnimation() {
       stars.forEach(s => {
         s.opacity += s.opacityDir;
         if (s.opacity > 0.25 || s.opacity < 0.02) s.opacityDir *= -1;
-
         ctx.beginPath();
         ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
-        ctx.fillStyle = `${WHITE} ${s.opacity})`;
+        ctx.fillStyle = WHITE + ' ' + s.opacity + ')';
         ctx.fill();
       });
 
@@ -102,33 +87,21 @@ export default function BackgroundAnimation() {
           }
           return;
         }
-
         if (w.state === 'fadein') {
           w.opacity += 0.008;
-          if (w.opacity >= 0.18) {
-            w.opacity = 0.18;
-            w.state = 'hold';
-            w.timer = w.holdTime;
-          }
+          if (w.opacity >= 0.18) { w.opacity = 0.18; w.state = 'hold'; w.timer = w.holdTime; }
         }
-
         if (w.state === 'hold') {
           w.timer--;
           if (w.timer <= 0) w.state = 'fadeout';
         }
-
         if (w.state === 'fadeout') {
           w.opacity -= 0.006;
-          if (w.opacity <= 0) {
-            w.opacity = 0;
-            w.state = 'waiting';
-            w.timer = Math.random() * 150 + 50;
-          }
+          if (w.opacity <= 0) { w.opacity = 0; w.state = 'waiting'; w.timer = Math.random() * 150 + 50; }
         }
-
         if (w.opacity > 0) {
-          ctx.font = \`600 \${w.fontSize}px Arial\`;
-          ctx.fillStyle = \`\${w.color} \${w.opacity})\`;
+          ctx.font = '600 ' + w.fontSize + 'px Arial';
+          ctx.fillStyle = w.color + ' ' + w.opacity + ')';
           ctx.fillText(w.text, w.x, w.y);
         }
       });
@@ -146,7 +119,7 @@ export default function BackgroundAnimation() {
 
   return (
     <canvas
-      ref={canvasRef}
+      ref={canvasRef as unknown as React.RefObject<HTMLCanvasElement>}
       style={{
         position: 'fixed',
         top: 0, left: 0,
