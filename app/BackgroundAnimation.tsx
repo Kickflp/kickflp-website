@@ -35,7 +35,7 @@ export default function BackgroundAnimation() {
         x: Math.random() * window.innerWidth,
         y: Math.random() * window.innerHeight,
         size: Math.random() * 1.5 + 0.3,
-        opacity: Math.random() * 0.2 + 0.05,
+        opacity: Math.random() * 0.35 + 0.05,
         opacityDir: (Math.random() > 0.5 ? 1 : -1) * 0.003,
       });
     }
@@ -65,7 +65,7 @@ export default function BackgroundAnimation() {
       // Draw stars
       stars.forEach(s => {
         s.opacity += s.opacityDir;
-        if (s.opacity > 0.25 || s.opacity < 0.02) s.opacityDir *= -1;
+        if (s.opacity > 0.40 || s.opacity < 0.02) s.opacityDir *= -1;
         ctx.beginPath();
         ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
         ctx.fillStyle = WHITE + ' ' + s.opacity + ')';
