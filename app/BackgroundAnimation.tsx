@@ -29,14 +29,14 @@ export default function BackgroundAnimation() {
       opacityDir: number;
     }[] = [];
 
-    for (let i = 0; i < 60; i++) {
+    for (let i = 0; i < 80; i++) {
       particles.push({
         x: Math.random() * window.innerWidth,
         y: Math.random() * window.innerHeight,
         vx: (Math.random() - 0.5) * 0.3,  // very slow drift
         vy: (Math.random() - 0.5) * 0.3,
         size: Math.random() * 2 + 0.5,
-        opacity: Math.random() * 0.15 + 0.03,
+        opacity: Math.random() * 0.3 + 0.08,
         opacityDir: Math.random() > 0.5 ? 0.001 : -0.001,
       });
     }
@@ -49,7 +49,7 @@ export default function BackgroundAnimation() {
       timer: number;
     }[] = [];
 
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 12; i++) {
       streaks.push({
         x: -200,
         y: Math.random() * window.innerHeight,
@@ -103,7 +103,7 @@ export default function BackgroundAnimation() {
 
         // Pulse opacity
         p.opacity += p.opacityDir;
-        if (p.opacity > 0.18 || p.opacity < 0.02) p.opacityDir *= -1;
+        if (p.opacity > 0.35 || p.opacity < 0.05) p.opacityDir *= -1;
 
         // Draw dot
         ctx.beginPath();
@@ -126,7 +126,7 @@ export default function BackgroundAnimation() {
             s.y = Math.random() * canvas.height;
             s.speed = Math.random() * 8 + 4;
             s.length = Math.random() * 150 + 80;
-            s.opacity = Math.random() * 0.12 + 0.04;
+            s.opacity = Math.random() * 0.25 + 0.1;
           }
           return;
         }
