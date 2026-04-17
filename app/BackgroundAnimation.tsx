@@ -22,10 +22,10 @@ export default function BackgroundAnimation() {
     const WHITE = 'rgba(255, 255, 255,';
 
     const sports = [
-      'Skateboarding', 'Surfing', 'BMX', 'Motocross',
-      'Snowboarding', 'Skiing', 'Mountain Biking', 'Parkour',
-      'Climbing', 'Wakeboarding', 'Scooter', 'FMX',
-      'Skimboarding', 'Bodyboarding', 'Mystery', 'Motion > Fear',
+      'SKATEBOARDING', 'SURFING', 'BMX', 'MOTOCROSS',
+      'SNOWBOARDING', 'SKIING', 'MOUNTAIN BIKING', 'PARKOUR',
+      'CLIMBING', 'WAKEBOARDING', 'SCOOTER', 'FMX',
+      'SKIMBOARDING', 'BODYBOARDING', 'MYSTERY', 'MOTION > FEAR',
     ];
 
     // Stars moving straight down at varying speeds — like falling through space
