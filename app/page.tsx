@@ -4,8 +4,6 @@ import { useState } from 'react';
 import Image from 'next/image';
 import PhoneVideo from './PhoneVideo';
 import BackgroundAnimation from './BackgroundAnimation';
-import BackgroundAnimation from './BackgroundAnimation';
-import BackgroundAnimation from './BackgroundAnimation';
 
 export default function Home() {
   const [name, setName] = useState('');
@@ -349,11 +347,6 @@ export default function Home() {
       </p>
 
     </main>
-  );
-    </>
-  );
-    </>
-  );
     </>
   );
 }
