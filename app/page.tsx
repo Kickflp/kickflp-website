@@ -283,6 +283,16 @@ export default function Home() {
 
       {/* JOIN TEXT — fontSize/margin to adjust */}
       <p style={{
+        color: '#cccccc',
+        fontSize: '15px',
+        lineHeight: 1.7,
+        textAlign: 'center',
+        maxWidth: '400px',
+        margin: '0 auto 32px auto',
+      }}>
+        KICKFLP is an athlete discovery platform built to showcase the raw clips and reels of up-and-coming action sports athletes across our mobile and Connected TV properties, globally. Watch, bookmark, and vote for who&apos;s got the best moves. The community decides who gets noticed.
+      </p>
+      <p style={{
         color: '#ffffff',
         fontSize: '22px',
         fontWeight: '700',
