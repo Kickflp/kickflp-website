@@ -80,7 +80,7 @@ export default function Home() {
         position: 'relative',
         width: '317px',                  // PHONE WIDTH
         height: '634px',                 // PHONE HEIGHT
-        marginBottom: '24px',            // PHONE BOTTOM MARGIN
+        marginBottom: '34px',            // PHONE BOTTOM MARGIN
       }}>
 
         {/* VIDEO — z-index 1 */}
@@ -284,11 +284,11 @@ export default function Home() {
       {/* JOIN TEXT — fontSize/margin to adjust */}
       <p style={{
         color: '#cccccc',
-        fontSize: '15px',
+        fontSize: '16px',
         lineHeight: 1.7,
         textAlign: 'center',
         maxWidth: '400px',
-        margin: '0 auto 32px auto',
+        margin: '0 auto 22px auto',
       }}>
         KICKFLP is an athlete discovery platform built to showcase the raw clips and reels of up-and-coming action sports athletes across our mobile and Connected TV properties, globally. Watch, bookmark, and vote for who&apos;s got the best moves. The community decides who gets noticed.
       </p>
