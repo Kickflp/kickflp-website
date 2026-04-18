@@ -34,7 +34,7 @@ export default function PrivacyPage() {
 
         <section style={{ marginBottom: '40px' }}>
           <p style={{ color: '#cccccc', lineHeight: 1.7, fontSize: '15px' }}>
-            KICKFLP (&quot;we&quot;, &quot;our&quot;, or &quot;us&quot;) operates the KICKFLP mobile application and the website located at kickflp.com (collectively, the &quot;Service&quot;). This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our Service. Please read this policy carefully. If you disagree with its terms, please discontinue use of the Service.
+            KICKFLP (&quot;we&quot;, &quot;our&quot;, or &quot;us&quot;) operates the KICKFLP mobile application, connected TV (CTV) applications, and the website located at kickflp.com (collectively, the &quot;Service&quot;). This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our Service. Please read this policy carefully. If you disagree with its terms, please discontinue use of the Service.
           </p>
         </section>
 
@@ -42,17 +42,17 @@ export default function PrivacyPage() {
           <p>We collect the following types of information:</p>
           <SubSection title="Information You Provide">
             <ul>
-              <li><strong>Account registration:</strong> When you create an account, we collect your name and email address.</li>
+              <li><strong>Account registration:</strong> When you create an account on the mobile or CTV app, we collect your name and email address.</li>
               <li><strong>Sign-in with Apple / Google:</strong> If you sign in using Apple or Google, we receive your name and email address as permitted by those services.</li>
               <li><strong>Waitlist sign-up:</strong> If you join our waitlist at kickflp.com, we collect your name and email address.</li>
               <li><strong>Athlete applications:</strong> If you apply as an athlete, we collect your name, email, and social media handles (Instagram, TikTok, YouTube).</li>
-              <li><strong>Sport preferences:</strong> We collect your selected action sports categories to personalize your content feed.</li>
+              <li><strong>Sport preferences:</strong> We collect your selected action sports categories to personalize your content feed across mobile and CTV.</li>
             </ul>
           </SubSection>
           <SubSection title="Information Collected Automatically">
             <ul>
               <li><strong>Usage data:</strong> We collect information about how you interact with the Service, including videos watched, content bookmarked, and time spent in the app.</li>
-              <li><strong>Device information:</strong> We may collect device type, operating system, and app version.</li>
+              <li><strong>Device information:</strong> We may collect device type, operating system, app version, and CTV platform (e.g. Roku, Fire TV, Apple TV, Samsung TV).</li>
               <li><strong>Advertising data:</strong> Our advertising partners may collect data related to ad impressions, clicks, and interactions. See Section 5 for details.</li>
             </ul>
           </SubSection>
@@ -61,12 +61,12 @@ export default function PrivacyPage() {
         <Section title="2. How We Use Your Information">
           <p>We use the information we collect to:</p>
           <ul>
-            <li>Create and manage your account</li>
+            <li>Create and manage your account across mobile and CTV platforms</li>
             <li>Personalize your content feed based on your sport preferences</li>
             <li>Send transactional emails such as email verification, password reset, and account notifications</li>
             <li>Send waitlist confirmation and product update emails</li>
             <li>Process and respond to athlete applications</li>
-            <li>Serve and measure advertising within the Service</li>
+            <li>Serve and measure advertising within the Service on mobile and CTV</li>
             <li>Monitor and analyze usage trends to improve the Service</li>
             <li>Detect and prevent fraudulent or unauthorized activity</li>
             <li>Comply with legal obligations</li>
@@ -77,7 +77,7 @@ export default function PrivacyPage() {
           <p>We do not sell your personal information. We may share your information in the following circumstances:</p>
           <ul>
             <li><strong>Service providers:</strong> We share information with third-party vendors who help us operate the Service, including hosting, email delivery, video infrastructure, and analytics providers.</li>
-            <li><strong>Advertising partners:</strong> We work with Google Ad Manager to serve ads within the app. These partners may use cookies and device identifiers to serve targeted advertising.</li>
+            <li><strong>Advertising partners:</strong> We work with Google Ad Manager and streaming ad partners to serve ads within the mobile and CTV apps. These partners may use cookies and device identifiers to serve targeted advertising.</li>
             <li><strong>Legal requirements:</strong> We may disclose your information if required by law, regulation, or legal process.</li>
             <li><strong>Business transfers:</strong> In the event of a merger, acquisition, or sale of assets, your information may be transferred as part of that transaction.</li>
           </ul>
@@ -90,7 +90,9 @@ export default function PrivacyPage() {
             <li><strong>Heroku (Salesforce)</strong> — app backend infrastructure (<a href="https://www.salesforce.com/company/privacy/" style={{ color: '#A8F0DD' }}>salesforce.com/company/privacy</a>)</li>
             <li><strong>Cloudflare</strong> — video storage and delivery (<a href="https://www.cloudflare.com/privacypolicy/" style={{ color: '#A8F0DD' }}>cloudflare.com/privacypolicy</a>)</li>
             <li><strong>Resend</strong> — transactional email delivery (<a href="https://resend.com/legal/privacy-policy" style={{ color: '#A8F0DD' }}>resend.com/legal/privacy-policy</a>)</li>
-            <li><strong>Google Ad Manager / Google Mobile Ads</strong> — advertising (<a href="https://policies.google.com/privacy" style={{ color: '#A8F0DD' }}>policies.google.com/privacy</a>)</li>
+            <li><strong>Google Ad Manager / Google Mobile Ads</strong> — advertising on mobile (<a href="https://policies.google.com/privacy" style={{ color: '#A8F0DD' }}>policies.google.com/privacy</a>)</li>
+            <li><strong>Wurl / streaming ad partners</strong> — advertising on CTV platforms</li>
+            <li><strong>Roku, Amazon Fire TV, Apple TV, Samsung TV and other CTV platforms</strong> — connected TV distribution, each subject to their own platform privacy policies</li>
             <li><strong>Sign in with Apple</strong> — authentication (<a href="https://www.apple.com/legal/privacy/" style={{ color: '#A8F0DD' }}>apple.com/legal/privacy</a>)</li>
             <li><strong>Sign in with Google</strong> — authentication (<a href="https://policies.google.com/privacy" style={{ color: '#A8F0DD' }}>policies.google.com/privacy</a>)</li>
           </ul>
@@ -98,7 +100,7 @@ export default function PrivacyPage() {
 
         <Section title="5. Advertising">
           <p>
-            KICKFLP displays ads within the mobile app served by Google Ad Manager and the Google Mobile Ads SDK. These services may use device identifiers (such as Apple&apos;s IDFA or Google&apos;s Advertising ID) to serve personalized advertisements based on your interests and prior app activity.
+            KICKFLP displays ads within the mobile app served by Google Ad Manager and the Google Mobile Ads SDK. On CTV platforms, ads are served via streaming ad insertion partners. These services may use device identifiers (such as Apple&apos;s IDFA, Google&apos;s Advertising ID, or CTV device IDs) to serve advertisements based on your interests and prior activity.
           </p>
           <p style={{ marginTop: '16px' }}>
             You can limit ad tracking by adjusting the privacy settings on your device:
@@ -106,16 +108,20 @@ export default function PrivacyPage() {
           <ul>
             <li><strong>iOS:</strong> Settings → Privacy & Security → Tracking → turn off &quot;Allow Apps to Request to Track&quot;</li>
             <li><strong>Android:</strong> Settings → Privacy → Ads → opt out of ads personalization</li>
+            <li><strong>Roku:</strong> Settings → Privacy → Advertising → Limit Ad Tracking</li>
+            <li><strong>Amazon Fire TV:</strong> Settings → Preferences → Privacy Settings → Interest-Based Ads</li>
+            <li><strong>Apple TV:</strong> Settings → Privacy → Advertising → turn off personalized ads</li>
+            <li><strong>Samsung TV:</strong> Settings → Support → Terms & Privacy → Interest-Based Advertising</li>
           </ul>
         </Section>
 
         <Section title="6. Data Retention">
           <p>
-            We retain your personal information for as long as your account is active or as needed to provide the Service. You may request deletion of your account at any time from within the app (Profile → Delete Account). Upon deletion, your personal data is removed from our active systems. Some data may be retained in backups for a limited period as required by law or for legitimate business purposes.
+            We retain your personal information for as long as your account is active or as needed to provide the Service. You may request deletion of your account at any time from within the mobile app (Profile → Delete Account). Upon deletion, your personal data is removed from our active systems. Some data may be retained in backups for a limited period as required by law or for legitimate business purposes.
           </p>
         </Section>
 
-        <Section title="7. Children\'s Privacy">
+        <Section title="7. Children's Privacy">
           <p>
             The Service is not directed to children under the age of 13. We do not knowingly collect personal information from children under 13. Users are required to confirm they are 13 or older during account creation. If we become aware that we have collected personal information from a child under 13 without parental consent, we will delete that information promptly.
           </p>
@@ -131,7 +137,10 @@ export default function PrivacyPage() {
             <li>Data portability</li>
           </ul>
           <p style={{ marginTop: '16px' }}>
-            To exercise any of these rights, contact us at <a href="mailto:sendit@kickflp.com" style={{ color: '#A8F0DD' }}>sendit@kickflp.com</a>.
+            To exercise any of these rights, contact us at{' '}
+            <a href="mailto:sendit@kickflp.com" style={{ color: '#A8F0DD' }}>
+              sendit&#64;kickflp&#46;com
+            </a>.
           </p>
         </Section>
 
@@ -160,7 +169,7 @@ export default function PrivacyPage() {
           }}>
             <p style={{ margin: 0, lineHeight: 2 }}>
               <strong>KICKFLP</strong><br />
-              Email: <a href="mailto:sendit@kickflp.com" style={{ color: '#A8F0DD' }}>sendit@kickflp.com</a><br />
+              Email: <a href="mailto:sendit@kickflp.com" style={{ color: '#A8F0DD' }}>sendit&#64;kickflp&#46;com</a><br />
               Website: <a href="https://kickflp.com" style={{ color: '#A8F0DD' }}>kickflp.com</a>
             </p>
           </div>
