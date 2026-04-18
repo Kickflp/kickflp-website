@@ -182,7 +182,7 @@ export default function Home() {
               overflow: 'hidden',
               backgroundColor: '#000',
             }}>
-              <img src="/astro.png" alt="avatar"
+              <img src="/astro.webp" alt="avatar"
                 style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
             </div>
             <span style={{ color: '#ffffff', fontSize: '14px', fontWeight: '700',
@@ -333,7 +333,7 @@ export default function Home() {
       </div>
 
       {/* ASTRO — width/height = size. marginTop = space above, marginBottom = space to copyright */}
-      <Image src="/astro.png" alt="KICKFLP Astronaut"
+      <Image src="/astro.webp" alt="KICKFLP Astronaut"
         width={70} height={70}
         style={{
           objectFit: 'contain',
@@ -342,8 +342,8 @@ export default function Home() {
         }} />
 
       {/* COPYRIGHT — color/fontSize to adjust */}
-      <p style={{ color: '#444444', fontSize: '12px', textAlign: 'center', margin: 0 }}>
-        © 2026 KICKFLP. All Rights Reserved.
+      <p style={{ color: '#888888', fontSize: '12px', textAlign: 'center', margin: 0 }}>
+        © 2026 KICKFLP. All Rights Reserved. · <a href="/privacy" style={{ color: '#888888', textDecoration: 'none' }}>Privacy Policy</a>
       </p>
 
     </main>
