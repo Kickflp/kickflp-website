@@ -290,7 +290,7 @@ export default function Home() {
         maxWidth: '400px',
         margin: '0 auto 22px auto',
       }}>
-        KICKFLP is an athlete discovery platform built to showcase the raw clips and reels of up-and-coming action sports athletes across our mobile and Connected TV properties, globally. Watch, bookmark, and vote for who&apos;s got the best moves. The community decides who gets noticed.
+        KICKFLP is an athlete discovery platform built to showcase the raw clips of up-and-coming action sports athletes across our mobile and Connected TV apps. Watch, bookmark, and vote for who&apos;s got the best moves. The community decides who gets noticed not an algorithm.
       </p>
       <p style={{
         color: '#ffffff',
